@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+body {
   align-items: center;
+  background: slategrey;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 100vh;
+}
+
+.game-container {
+  background: white;
+  border-radius: 12px;
+  height: 450px;
+  width: 500px;
+}
+
+h1 {
+  align-items: center;
+  background: #1a1146;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  height: 80px;
+  justify-content: center;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.player-container,
+.computer-container {
+  display: grid;
+  gap: 0px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-top: 40px;
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h2 {
+  grid-column-end: 4;
+  grid-column-start: 1;
+  grid-row-end: 2;
+  grid-row-start: 1;
+  margin-bottom: 20px;
+}
+
+.fa-hand-rock {
+  grid-column-end: 2;
+  grid-column-start: 1;
+  grid-row-end: 3;
+  grid-row-start: 2;
+}
+
+.fa-hand-paper {
+  grid-column-end: 3;
+  grid-column-start: 2;
+  grid-row-end: 3;
+  grid-row-start: 2;
+}
+
+.fa-hand-scissors {
+  grid-column-end: 4;
+  grid-column-start: 3;
+  grid-row-end: 3;
+  grid-row-start: 2;
+}
+
+.far {
+  font-size: 3rem;
+}
+
+.player-container .far {
+  color: indianred;
+  cursor: pointer;
+}
+
+.computer-container .far {
+  color: lightseagreen;
+}
+
+.selected {
+  background-color: slategray !important;
 }
