@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./App.css";
 import getComputerMove from "./helpers/getComputerMove";
-import { rules } from "./constants/rules";
 import { chooses } from "./constants/chooses";
 import { IPieces } from "./models/Pieces";
+import getResult from "./helpers/getResult";
 
 type IDefaultPieces = "";
 
@@ -24,42 +24,22 @@ function App() {
     playerIcon?.classList.add("selected");
   };
 
-  const computerChooses = () => {
-    const computerMove = getComputerMove();
-    setComputerChoice(computerMove);
-
-    displayComputerChoice();
-  };
-
   const displayComputerChoice = () => {
     const computerIcon = document.getElementById(`computer-${computerChoice}`);
     computerIcon?.classList.add("selected");
   };
 
-  const updateResult = (playerChoice: IPieces) => {
-    if (playerChoice === computerChoice) {
-      setResultText("It's a draw!");
-
-      return;
-    }
-
-    const choice = rules[playerChoice];
-
-    if (choice.defeats === computerChoice) {
-      setResultText("You won!");
-
-      return;
-    }
-
-    setResultText("You lost!");
-  };
-
   const playerChooses = (playerChoice: IPieces) => {
-    setResultText("");
+    const computerMove = getComputerMove();
+    setComputerChoice(computerMove);
+
     resetSelected();
     displayPlayerChoice(playerChoice);
-    computerChooses();
-    updateResult(playerChoice);
+
+    const result = getResult(playerChoice, computerChoice);
+    setResultText(result);
+
+    displayComputerChoice();
   };
 
   return (
@@ -89,7 +69,7 @@ function App() {
         ))}
       </section>
       <section className="result-container">
-        <h3 id="resultText">{resultText}</h3>
+        <h3>{resultText}</h3>
       </section>
     </main>
   );
