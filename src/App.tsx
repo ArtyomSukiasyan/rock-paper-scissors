@@ -47,7 +47,7 @@ function App() {
       <header>
         <h1>Rock Paper Scissors</h1>
       </header>
-      <section className="player-container">
+      <section className="container player-container">
         <h2>Player</h2>
         {chooses.map((el) => (
           <span
@@ -60,7 +60,7 @@ function App() {
           </span>
         ))}
       </section>
-      <section className="computer-container">
+      <section className="container">
         <h2>Computer</h2>
         {chooses.map((el) => (
           <span className="far" id={`computer-${el.type}`} key={el.type}>
