@@ -31,7 +31,6 @@ function App() {
           <span
             className={el.type === playerChoice ? " selected" : ""}
             onClick={() => playerChooses(el.type)}
-            id={`player-${el.type}`}
             key={el.type}
           >
             <el.Component />
@@ -43,7 +42,6 @@ function App() {
         {chooses.map((el) => (
           <span
             className={el.type === computerChoice ? " selected" : ""}
-            id={`computer-${el.type}`}
             key={el.type}
           >
             <el.Component />
