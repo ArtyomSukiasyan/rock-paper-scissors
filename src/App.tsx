@@ -1,45 +1,23 @@
 import { useState } from "react";
-import "./App.css";
 import getComputerMove from "./helpers/getComputerMove";
+import getResult from "./helpers/getResult";
 import { chooses } from "./constants/chooses";
 import { IPieces } from "./models/Pieces";
-import getResult from "./helpers/getResult";
-
-type IDefaultPieces = "";
+import "./App.css";
 
 function App() {
-  const [computerChoice, setComputerChoice] = useState<
-    IPieces | IDefaultPieces
-  >("");
+  const [playerChoice, setPlayerChoice] = useState<IPieces | "">("");
+  const [computerChoice, setComputerChoice] = useState<IPieces | "">("");
   const [resultText, setResultText] = useState("");
 
-  const resetSelected = () => {
-    document.querySelectorAll(".far").forEach((el) => {
-      el.classList.remove("selected");
-    });
-  };
+  const playerChooses = (choice: IPieces) => {
+    setPlayerChoice(choice);
 
-  const displayPlayerChoice = (playerChoice: IPieces) => {
-    const playerIcon = document.getElementById(`player-${playerChoice}`);
-    playerIcon?.classList.add("selected");
-  };
-
-  const displayComputerChoice = () => {
-    const computerIcon = document.getElementById(`computer-${computerChoice}`);
-    computerIcon?.classList.add("selected");
-  };
-
-  const playerChooses = (playerChoice: IPieces) => {
     const computerMove = getComputerMove();
     setComputerChoice(computerMove);
 
-    resetSelected();
-    displayPlayerChoice(playerChoice);
-
-    const result = getResult(playerChoice, computerChoice);
+    const result = getResult(choice, computerMove);
     setResultText(result);
-
-    displayComputerChoice();
   };
 
   return (
@@ -51,7 +29,7 @@ function App() {
         <h2>Player</h2>
         {chooses.map((el) => (
           <span
-            className="far"
+            className={el.type === playerChoice ? " selected" : ""}
             onClick={() => playerChooses(el.type)}
             id={`player-${el.type}`}
             key={el.type}
@@ -63,7 +41,11 @@ function App() {
       <section className="container">
         <h2>Computer</h2>
         {chooses.map((el) => (
-          <span className="far" id={`computer-${el.type}`} key={el.type}>
+          <span
+            className={el.type === computerChoice ? " selected" : ""}
+            id={`computer-${el.type}`}
+            key={el.type}
+          >
             <el.Component />
           </span>
         ))}
