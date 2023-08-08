@@ -1,7 +1,9 @@
+import { IPieces } from "../models/Pieces";
+
 interface IRules {
-  rock: { name: string; defeats: string };
-  paper: { name: string; defeats: string };
-  scissors: { name: string; defeats: string };
+  rock: { name: IPieces; defeats: IPieces };
+  paper: { name: IPieces; defeats: IPieces };
+  scissors: { name: IPieces; defeats: IPieces };
 }
 
 export const rules: IRules = {

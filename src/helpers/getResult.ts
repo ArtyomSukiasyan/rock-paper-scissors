@@ -3,7 +3,7 @@ import { IPieces } from "../models/Pieces";
 
 export default function getResult(
   playerChoice: IPieces,
-  computerChoice: IPieces | ""
+  computerChoice: IPieces
 ) {
   if (playerChoice === computerChoice) {
     return "Draw!";

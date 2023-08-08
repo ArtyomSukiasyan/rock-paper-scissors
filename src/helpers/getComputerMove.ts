@@ -1,11 +1,13 @@
-export default function getComputerMove() {
-  const computerChoiceNumber = Math.random();
+import { IPieces } from "../models/Pieces";
 
-  if (computerChoiceNumber < 0.33) {
+export default function getComputerMove(): IPieces {
+  const randomNumber = Math.random();
+
+  if (randomNumber < 0.33) {
     return "rock";
   }
 
-  if (computerChoiceNumber <= 0.67) {
+  if (randomNumber <= 0.67) {
     return "paper";
   }
 

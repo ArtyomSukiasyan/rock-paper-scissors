@@ -3,7 +3,12 @@ import Rock from "../components/SVG/Rock";
 import Scissors from "../components/SVG/Scissors";
 import { IPieces } from "../models/Pieces";
 
-export const chooses: { type: IPieces; Component: () => JSX.Element }[] = [
+interface IChooses {
+  type: IPieces;
+  Component: () => JSX.Element;
+}
+
+export const chooses: IChooses[] = [
   {
     type: "rock",
     Component: Rock,
