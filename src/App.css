@@ -21,7 +21,7 @@ body {
 
 h1 {
   align-items: center;
-  background: #1a1146;
+  background-color: #1a1146;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
   display: flex;
@@ -52,5 +52,8 @@ h2 {
 }
 
 .selected {
-  background-color: slategray;
+  width: 50px;
+  margin: auto;
+  border-radius: 8px;
+  background-color: slategrey;
 }

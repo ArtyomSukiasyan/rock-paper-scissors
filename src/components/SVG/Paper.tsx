@@ -1,13 +1,6 @@
 export default function Paper() {
   return (
-    <svg
-      version="1.1"
-      id="Layer_1"
-      xmlns="http://www.w3.org/2000/svg"
-      width="48px"
-      height="48px"
-      viewBox="0 0 32 32"
-    >
+    <svg width="48px" height="48px" viewBox="0 0 32 32">
       <g>
         <path
           fill="#808184"
